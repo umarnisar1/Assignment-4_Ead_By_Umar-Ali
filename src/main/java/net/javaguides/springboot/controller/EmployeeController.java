@@ -55,23 +55,21 @@ public class EmployeeController {
 		if (!imageFile.isEmpty()) {
 			try {
 
-				String saveDirectory=httpServletRequest.getSession().getServletContext().getRealPath("/")+"images\\";//to save to images folder
+				String saveDirectory = httpServletRequest.getSession().getServletContext().getRealPath("/") + "images\\";//to save to images folder
 				Files.createDirectories(Paths.get(saveDirectory));
 
 				String fileName = imageFile.getOriginalFilename();//getting file name
-				System.out.println("directory with file name: " + saveDirectory+fileName);
+				System.out.println("directory with file name: " + saveDirectory + fileName);
 				imageFile.transferTo(new File(saveDirectory + fileName));
-				employee.setImageUrl("/images/"+imageFile.getOriginalFilename());
-			}
-			catch (Exception ex)
-			{
+				employee.setImageUrl("/images/" + imageFile.getOriginalFilename());
+			} catch (Exception ex) {
 
 
 			}
 		}
 
 		// Save employee to the database
-		employeeService.saveEmployee(employee,imageFile);
+		employeeService.saveEmployee(employee, imageFile);
 
 		redirectAttributes.addFlashAttribute("successMessage", "Employee saved successfully.");
 		return "redirect:/list";
@@ -118,9 +116,7 @@ public class EmployeeController {
 		model.addAttribute("listEmployees", listEmployees);
 		return "index";
 	}
-
-	@GetMapping("/login")
-	public String login() {
-		return "login";
-	}
 }
+
+
+
