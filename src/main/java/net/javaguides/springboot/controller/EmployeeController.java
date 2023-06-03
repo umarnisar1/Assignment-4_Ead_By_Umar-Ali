@@ -27,8 +27,9 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 
 	@GetMapping("/")
-	public String viewHomePage() {
-		return "index";
+	public String viewHomePage(Model model)
+	{
+		return findPaginated(1, "firstName", "asc", model);
 	}
 
 	// display list of employees
