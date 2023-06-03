@@ -34,24 +34,10 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void saveEmployee(Employee employee, MultipartFile imageFile) {
 		try {
 			if (!imageFile.isEmpty()) {
-			/*	String imageBytes = imageFile.getOriginalFilename();
-				try {
-					Files.createDirectories(Paths.get("images"));
-				}
-				catch (Exception ex)
-				{
 
-				}
-				String FullPath="images\\"+imageBytes;
-				//File newFile= new File (FullPath);
-				Files.copy(imageFile.getInputStream(), Path.of(FullPath));
-				String AbsolutePath= Path.of(FullPath).toAbsolutePath().toString();
-				//imageFile.transferTo(newFile);
-				employee.setImageUrl(AbsolutePath);*/
 			}
 		} catch (Exception ex)
 		{
-			// Handle exception, e.g., log error or throw custom exception
 		}
 
 		this.employeeRepository.save(employee);
