@@ -29,7 +29,7 @@ public class EmployeeController {
 	@GetMapping("/")
 	public String viewHomePage(Model model)
 	{
-		return findPaginated(1, "name", "asc", model);
+		return findPaginated(1, "firstname", "asc", model);
 	}
 
 	// display list of employees
@@ -69,7 +69,6 @@ public class EmployeeController {
 			}
 		}
 
-		// Save employee to the database
 		employeeService.saveEmployee(employee, imageFile);
 
 		redirectAttributes.addFlashAttribute("successMessage", "Employee saved successfully.");
