@@ -34,7 +34,21 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void saveEmployee(Employee employee, MultipartFile imageFile) {
 		try {
 			if (!imageFile.isEmpty()) {
+				String uploadDir = "./images/";
+				String fileName = imageFile.getOriginalFilename();
+				String filePath = uploadDir + fileName;
+				Path destination = Paths.get(filePath);
 
+				// Create the directory if it doesn't exist
+				if (!Files.exists(Paths.get(uploadDir))) {
+					Files.createDirectories(Paths.get(uploadDir));
+				}
+
+				// Save the image file to the specified directory
+				Files.copy(imageFile.getInputStream(), destination);
+
+				// Set the image URL of the employee
+				employee.setImageUrl(filePath);
 			}
 		} catch (Exception ex)
 		{

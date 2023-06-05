@@ -29,7 +29,7 @@ public class EmployeeController {
 	@GetMapping("/")
 	public String viewHomePage(Model model)
 	{
-		return findPaginated(1, "firstname", "asc", model);
+		return findPaginated(1, "firstName", "asc", model);
 	}
 
 	// display list of employees
